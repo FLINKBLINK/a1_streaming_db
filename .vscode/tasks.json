@@ -1,0 +1,299 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "A1: subir o MySQL (docker compose up)",
+      "type": "shell",
+      "command": "docker compose up -d && docker compose ps",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "A1: status do container",
+      "type": "shell",
+      "command": "docker compose ps",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "A1: parar o MySQL",
+      "type": "shell",
+      "command": "docker compose stop",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "A1: ZERAR tudo e subir de novo (apaga os dados)",
+      "type": "shell",
+      "command": "docker compose down -v && docker compose up -d",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "A1: terminal mysql interativo",
+      "type": "process",
+      "command": "docker",
+      "args": [
+        "exec",
+        "-it",
+        "-e",
+        "MYSQL_PWD=fatec123",
+        "a1_mysql",
+        "mysql",
+        "-uroot",
+        "streaming_db"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "A1: 00 - 9.1 criar banco",
+      "type": "process",
+      "command": "docker",
+      "args": [
+        "exec",
+        "-e",
+        "MYSQL_PWD=fatec123",
+        "a1_mysql",
+        "mysql",
+        "-uroot",
+        "--table",
+        "-vvv",
+        "-e",
+        "source /sql/00_criar_banco.sql"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true,
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "A1: 01 - 9.2 criar tabelas",
+      "type": "process",
+      "command": "docker",
+      "args": [
+        "exec",
+        "-e",
+        "MYSQL_PWD=fatec123",
+        "a1_mysql",
+        "mysql",
+        "-uroot",
+        "--table",
+        "-vvv",
+        "-e",
+        "source /sql/01_criar_tabelas.sql"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true,
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "A1: 02 - 9.3 inserir 10 registros",
+      "type": "process",
+      "command": "docker",
+      "args": [
+        "exec",
+        "-e",
+        "MYSQL_PWD=fatec123",
+        "a1_mysql",
+        "mysql",
+        "-uroot",
+        "--table",
+        "-vvv",
+        "-e",
+        "source /sql/02_inserir_registros.sql"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true,
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "A1: 03 - 9.4 nova coluna",
+      "type": "process",
+      "command": "docker",
+      "args": [
+        "exec",
+        "-e",
+        "MYSQL_PWD=fatec123",
+        "a1_mysql",
+        "mysql",
+        "-uroot",
+        "--table",
+        "-vvv",
+        "-e",
+        "source /sql/03_alter_add_coluna.sql"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true,
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "A1: 04 - 9.5 renomear coluna",
+      "type": "process",
+      "command": "docker",
+      "args": [
+        "exec",
+        "-e",
+        "MYSQL_PWD=fatec123",
+        "a1_mysql",
+        "mysql",
+        "-uroot",
+        "--table",
+        "-vvv",
+        "-e",
+        "source /sql/04_alter_rename_coluna.sql"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true,
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "A1: 05 - 9.6 excluir coluna",
+      "type": "process",
+      "command": "docker",
+      "args": [
+        "exec",
+        "-e",
+        "MYSQL_PWD=fatec123",
+        "a1_mysql",
+        "mysql",
+        "-uroot",
+        "--table",
+        "-vvv",
+        "-e",
+        "source /sql/05_alter_drop_coluna.sql"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true,
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "A1: 06 - 9.7 alterar dado",
+      "type": "process",
+      "command": "docker",
+      "args": [
+        "exec",
+        "-e",
+        "MYSQL_PWD=fatec123",
+        "a1_mysql",
+        "mysql",
+        "-uroot",
+        "--table",
+        "-vvv",
+        "-e",
+        "source /sql/06_update.sql"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true,
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "A1: 07 - 9.8 excluir dado",
+      "type": "process",
+      "command": "docker",
+      "args": [
+        "exec",
+        "-e",
+        "MYSQL_PWD=fatec123",
+        "a1_mysql",
+        "mysql",
+        "-uroot",
+        "--table",
+        "-vvv",
+        "-e",
+        "source /sql/07_delete.sql"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true,
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "A1: 08 - bonus consultas",
+      "type": "process",
+      "command": "docker",
+      "args": [
+        "exec",
+        "-e",
+        "MYSQL_PWD=fatec123",
+        "a1_mysql",
+        "mysql",
+        "-uroot",
+        "--table",
+        "-vvv",
+        "-e",
+        "source /sql/08_consultas_bonus.sql"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true,
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "A1: rodar TUDO na ordem (00 a 07)",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "A1: 00 - 9.1 criar banco",
+        "A1: 01 - 9.2 criar tabelas",
+        "A1: 02 - 9.3 inserir 10 registros",
+        "A1: 03 - 9.4 nova coluna",
+        "A1: 04 - 9.5 renomear coluna",
+        "A1: 05 - 9.6 excluir coluna",
+        "A1: 06 - 9.7 alterar dado",
+        "A1: 07 - 9.8 excluir dado"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}

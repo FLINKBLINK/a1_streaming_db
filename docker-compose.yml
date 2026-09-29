@@ -1,0 +1,28 @@
+# A1 - Plataforma de Streaming | MySQL 8.0 em container para rodar os scripts
+# Subir:   docker compose up -d        Parar: docker compose stop
+# Zerar tudo (apaga os dados): docker compose down -v && docker compose up -d
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: a1_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: fatec123        # mesma senha usada em .vscode/settings.json e .vscode/tasks.json
+      MYSQL_DATABASE: streaming_db         # cria o banco vazio para a conexao do VS Code funcionar de primeira
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --default-authentication-plugin=mysql_native_password   # compatibilidade com as extensoes do VS Code
+    ports:
+      - "3307:3306"                        # 3307 no seu PC para nao brigar com um MySQL local; 3306 dentro do container
+    volumes:
+      - a1_mysql_data:/var/lib/mysql       # dados persistem entre reinicios
+      - ./sql:/sql:ro                      # os scripts ficam visiveis dentro do container em /sql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  a1_mysql_data:

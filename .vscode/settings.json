@@ -1,0 +1,18 @@
+{
+  "sqltools.connections": [
+    {
+      "name": "A1 - streaming_db (Docker)",
+      "driver": "MySQL",
+      "server": "localhost",
+      "port": 3307,
+      "database": "streaming_db",
+      "username": "root",
+      "password": "fatec123",
+      "connectionTimeout": 30
+    }
+  ],
+  "sqltools.results.limit": 200,
+  "sqltools.autoOpenSessionFiles": false,
+  "files.encoding": "utf8",
+  "files.eol": "\n"
+}
