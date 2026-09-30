@@ -135,10 +135,8 @@ def conteudos(
 
         WHERE
             (:tipo IS NULL OR c.tipo = :tipo)
-
             AND
-
-            (:genero IS NULL OR g.nome_genero = :genero)
+            (:genero IS NULL OR g.nome_genero = :genero OR g.nome_genero IS NULL)
 
         ORDER BY c.titulo
     """
@@ -147,7 +145,7 @@ def conteudos(
         sql,
         {
             "tipo": tipo.upper() if tipo else None,
-            "genero": genero
+            "genero": genero.upper() if genero else None
         }
     )
 
