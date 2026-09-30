@@ -1,0 +1,14 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# segredos locais (o start.sh recria o .env se faltar)
+.env
+
+# estado do start.sh / stop.sh (pid, logs)
+.streamflix/
+
+# sistema
+.DS_Store
+Thumbs.db
