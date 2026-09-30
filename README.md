@@ -22,9 +22,24 @@ a1_streaming_db/
 │   ├── 06_update.sql                   → 9.7
 │   ├── 07_delete.sql                   → 9.8
 │   └── 08_consultas_bonus.sql          → opcional (JOINs para a apresentação)
-└── entrega/
-    └── A1_streaming_db_scripts.sql     # os mesmos comandos em um único arquivo, para entregar no Teams
+├── entrega/
+│   └── A1_streaming_db_scripts.sql     # os mesmos comandos em um único arquivo, para entregar no Teams
+├── backend/  frontend/                 # webapp StreamFlix (FastAPI + MySQL) — ver README1.md
+└── start.sh  stop.sh                   # sobe / para tudo com um comando
 ```
+
+## Webapp StreamFlix (bônus)
+
+Além dos scripts, o projeto traz um site que usa o banco de verdade: catálogo, histórico, usuários,
+assinaturas e um explorador do banco com console SQL e checklist dos itens 9.1–9.8.
+
+```bash
+chmod +x start.sh stop.sh   # 1ª vez
+./start.sh                  # MySQL + scripts (se o banco estiver vazio) + API + navegador
+./stop.sh                   # para tudo
+```
+
+Detalhes em `README1.md`. O webapp **não altera a estrutura do banco** — só lê e grava dados.
 
 ## Pré-requisitos
 
